@@ -8,9 +8,11 @@ function App() {
       <h1 className="text-8xl font-bold z-50">SearchViz</h1>
       <p className="text-2xl z-50">Search Algorithms Visualized</p>
 
-      <Button className="my-5 z-50 cursor-pointer">
-        Get Started <MoveRight />
-      </Button>
+      <a href="/explorer" className="my-5 z-50 cursor-pointer">
+        <Button>
+          Get Started <MoveRight />
+        </Button>
+      </a>
 
       <div
         style={{
