@@ -29,6 +29,13 @@ interface EndCheck {
   winner: "X" | "O" | "Draw" | null;
 }
 
+interface BoardNodeData {
+  board: gameCell[];
+  isMax: boolean;
+  score: number | null;
+  isPath: boolean;
+}
+
 /***** Helpers *****/
 function checkEnd(boardState: gameCell[]): EndCheck {
   let end = false;
@@ -117,7 +124,7 @@ function applyLayout(nodesMap: Map<string, Node>, edgesMap: Map<string, Edge>) {
 }
 
 /***** Custom React Flow Node *****/
-function BoardNode({ data }: { data: any }) {
+function BoardNode({ data }: { data: BoardNodeData }) {
   const isMax = data.isMax;
   const isPath = data.isPath;
 
@@ -136,7 +143,7 @@ function BoardNode({ data }: { data: any }) {
         {isMax ? "MAX (O)" : "MIN (X)"}
       </div>
       <div className="grid grid-cols-3 gap-[2px] bg-gray-300 p-[2px] rounded-sm w-full">
-        {data.board.map((cell: any, i: number) => (
+        {data.board.map((cell: gameCell, i: number) => (
           <div
             key={i}
             className="w-5 h-5 bg-white flex items-center justify-center font-bold text-xs"
